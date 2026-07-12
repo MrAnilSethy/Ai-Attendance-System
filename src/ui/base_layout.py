@@ -11,7 +11,7 @@ def style_background_home():
 
             .stApp div[data-testid="stColumn"]{
                 background-color:#E0E3FF !important;
-                padding:2rem !important;
+                padding:1.7rem !important;
                 border-radius:4.7rem !important;
             }
 
@@ -44,6 +44,9 @@ def style_base_layout():
             header,
             footer{
                 visibility:hidden !important;
+            }
+            header{
+                color:#0A0A0A !important;
             }
 
             .block-container{
