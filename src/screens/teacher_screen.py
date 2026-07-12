@@ -7,12 +7,34 @@ def teacher_screen():
     style_background_dashboard()
     style_base_layout()
     
-    
-    if 'teacher_login_type' not in st.session_state or st.session_state.teacher_login_type=="login":
+    if 'teacher_data' in st.session_state:
+        teacher_dashboard()
+    elif 'teacher_login_type' not in st.session_state or st.session_state.teacher_login_type=="login":
         teacher_screen_login()
     elif st.session_state.teacher_login_type == "register":
         teacher_screen_register()  
     
+    
+ 
+        
+#teacher dashboard    
+def teacher_dashboard():
+    teacher_data = st.session_state['teacher_data']
+    st.header(f"""Welcome, {teacher_data['name']}""")
+    
+
+    
+#login_teacher
+def login_teacher(username,password):
+    if not username or not password:
+        return False
+    teacher = teacher_login(username,password)
+    if teacher:
+        st.session_state['user_role'] = 'teacher'
+        st.session_state['teacher_data'] = teacher
+        st.session_state['is_logged_in'] = True
+        return True
+
 
 #teacher login screen       
 def teacher_screen_login():
@@ -35,7 +57,7 @@ def teacher_screen_login():
     btncol1,btncol2 = st.columns(2)
     with btncol1:
         if st.button("Login",icon=":material/passkey:",shortcut="control+enter",width="stretch"):
-            if teacher_login(teacher_username,teacher_pass):
+            if login_teacher(teacher_username,teacher_pass):
                 st.toast("Welcome back",icon="👋")
                 import time
                 time.sleep(2)
