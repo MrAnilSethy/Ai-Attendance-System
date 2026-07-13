@@ -33,3 +33,8 @@ def teacher_login(username,password):
             return teacher
         else:
             return None
+        
+#all studnets
+def get_all_students():
+    response = supabase.table("students").select("*").execute()
+    return response.data

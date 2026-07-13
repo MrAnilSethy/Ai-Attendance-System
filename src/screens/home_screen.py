@@ -8,7 +8,6 @@ def home_screen():
     style_background_home()
     col1,col2 = st.columns(2,gap="large")
     with col1:
-        # st.header("🎓 I'm Student ")
         st.markdown("""
         <h2 style='color:#31333F;'>🎓 I'm Student</h2>""",
         unsafe_allow_html=True
@@ -18,7 +17,6 @@ def home_screen():
             st.session_state['login_type'] = 'student'
             st.rerun()
     with col2:
-        # st.header("👨‍🏫 I'm Teacher")
         st.markdown("""
         <h2 style='color:#31333F;'>👨‍🏫 I'm Teacher</h2>""",
         unsafe_allow_html=True
